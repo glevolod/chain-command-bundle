@@ -1,0 +1,5 @@
+services:
+  glevolod_chain_command.main_command:
+    class: Glevolod\ChainCommandBundle\Command\MainCommand
+    tags:
+      - { name: 'console.command' }

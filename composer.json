@@ -1,0 +1,22 @@
+{
+  "name": "glevolod/chain-command-bundle",
+  "description": "Set security headers for Symfony apps through middleware",
+  "type": "symfony-bundle",
+  "require": {
+    "php": ">=7.4",
+    "symfony/framework-bundle": "^5.3",
+    "symfony/console": "^5.3"
+  },
+  "autoload": {
+    "psr-4": {
+      "Glevolod\\ChainCommandBundle\\": "src/"
+    }
+  },
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "Vladimir Glechikov",
+      "email": "glevolod@gmail.com"
+    }
+  ]
+}
