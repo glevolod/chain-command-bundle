@@ -4,13 +4,23 @@
 namespace Glevolod\ChainCommandBundle\Command;
 
 
+use Glevolod\ChainCommandBundle\Service\CommandChain;
 use Symfony\Component\Console\Command\Command;
+use Symfony\Component\Console\Input\ArrayInput;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
 
 class MainCommand extends Command
 {
     protected static $defaultName = 'glevolod:main-command';
+
+    private $commandChain;
+
+    public function __construct(CommandChain $commandChain)
+    {
+        $this->commandChain = $commandChain;
+        parent::__construct();
+    }
 
     protected function configure(): void
     {
@@ -22,6 +32,11 @@ class MainCommand extends Command
     protected function execute(InputInterface $input, OutputInterface $output): int
     {
         $output->writeln('Hello from command "' . self::$defaultName . '"');
+        /** @var Command $commandClass */
+        foreach ($this->commandChain->getCommands() as $command) {
+            $input = new ArrayInput([]);
+            $command->run($input, $output);
+        }
         return Command::SUCCESS;
     }
 }
