@@ -11,7 +11,7 @@ use Symfony\Component\Console\Event\ConsoleCommandEvent;
 use Symfony\Component\Console\Event\ConsoleErrorEvent;
 use Symfony\Component\DependencyInjection\Container;
 
-class CommandListener
+class DeclineChainedCommandListener
 {
     public function onConsoleCommand(ConsoleCommandEvent $event)
     {
