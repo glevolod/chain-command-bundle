@@ -7,3 +7,7 @@ services:
       - { name: 'console.command' }
   glevolod_chain_command.command_chain:
     class: Glevolod\ChainCommandBundle\Service\CommandChain
+
+  Glevolod\ChainCommandBundle\EventListener\CommandListener:
+    tags:
+      - { name: kernel.event_listener, event: console.command }

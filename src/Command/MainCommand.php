@@ -32,10 +32,9 @@ class MainCommand extends Command
     protected function execute(InputInterface $input, OutputInterface $output): int
     {
         $output->writeln('Hello from command "' . self::$defaultName . '"');
-        /** @var Command $commandClass */
+        /** @var Command $command */
         foreach ($this->commandChain->getCommands() as $command) {
-            $input = new ArrayInput([]);
-            $command->run($input, $output);
+            $command->run(new ArrayInput([]), $output);
         }
         return Command::SUCCESS;
     }
