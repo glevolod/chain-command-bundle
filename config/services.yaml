@@ -3,10 +3,13 @@ services:
     class: Glevolod\ChainCommandBundle\Command\MainCommand
     arguments:
       $commandChain: '@glevolod_chain_command.command_chain'
+      $logger: '@logger'
     tags:
       - { name: 'console.command' }
   glevolod_chain_command.command_chain:
     class: Glevolod\ChainCommandBundle\Service\CommandChain
+    arguments:
+      $logger: '@logger'
 
   Glevolod\ChainCommandBundle\EventListener\DeclineChainedCommandListener:
     tags:
